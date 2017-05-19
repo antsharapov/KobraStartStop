@@ -29,7 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (gdz_mail.equals("")) gdz_mail="SharapovAV@aaq.basel.aero";
         if (krr_mail.equals("")) krr_mail="SharapovAV@aaq.basel.aero";
         if (from_mail.equals("")) from_mail="app.mail.relay@gmail.com";
-        if (from_pass.equals("")) from_pass="BwAx45$%";
+        if (from_pass.equals("")) from_pass="***";
         if (lock_min.equals("")) lock_min="3";
 
         final EditText aaq_edit = (EditText) findViewById(R.id.aaq_editmail);
