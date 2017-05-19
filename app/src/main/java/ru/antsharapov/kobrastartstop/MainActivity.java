@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 last_btn.setEnabled(false);
                 ref_btn.setEnabled(true);
                 exit_btn.setEnabled(true);
-                text1.setText("00:03:00");
+                text1.setText("none");
                 Thread thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
