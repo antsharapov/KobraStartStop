@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.antsharapov.kobrastartstop.SettingsActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+    </TableLayout>
+
+    <EditText
+        android:id="@+id/aaq_editmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_toEndOf="@+id/aaq_mail" />
+
+    <EditText
+        android:id="@+id/aer_editmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_below="@+id/aaq_editmail"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/aaq_editmail" />
+
+    <EditText
+        android:id="@+id/gdz_editmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/aer_editmail"
+        android:layout_below="@+id/aer_editmail"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/krr_editmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/gdz_editmail"
+        android:layout_below="@+id/gdz_editmail"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/aaq_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/aer_editmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:text="AAQ mail:" />
+
+    <TextView
+        android:id="@+id/aer_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gdz_editmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp"
+        android:text="AER mail:" />
+
+    <TextView
+        android:id="@+id/gdz_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/aer_mail"
+        android:layout_marginTop="11dp"
+        android:text="GDZ mail:" />
+
+    <TextView
+        android:id="@+id/krr_mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/gdz_mail"
+        android:layout_below="@+id/gdz_editmail"
+        android:layout_marginTop="10dp"
+        android:text="KRR mail:" />
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Save" />
+
+    <EditText
+        android:id="@+id/sendfrom_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/krr_editmail"
+        android:layout_below="@+id/krr_editmail"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/pass_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/sendfrom_edit"
+        android:layout_below="@+id/sendfrom_edit"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/sendFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pass_edit"
+        android:layout_alignStart="@+id/krr_mail"
+        android:layout_marginBottom="11dp"
+        android:text="From:" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pass:"
+        android:layout_alignBaseline="@+id/pass_edit"
+        android:layout_alignBottom="@+id/pass_edit"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/lock_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/pass_edit"
+        android:layout_below="@+id/pass_edit"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lock_edit"
+        android:layout_alignBottom="@+id/lock_edit"
+        android:layout_alignParentStart="true"
+        android:text="Lock,m:" />
+
+</RelativeLayout>
