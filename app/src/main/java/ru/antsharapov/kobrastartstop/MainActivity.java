@@ -46,7 +46,6 @@ import javax.mail.internet.MimeMessage;
 public class MainActivity extends AppCompatActivity {
 
     private static final String FORMAT = "%02d:%02d:%02d";
-    final SharedPreferences preferences = this.getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
     Spinner sp;
     ArrayList<String> list = new ArrayList<>();
     String first, airport;
@@ -179,6 +178,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void sendEmail(String sending_text) {
+        final SharedPreferences preferences = this.getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
         final String username = preferences.getString("from_mail", "");
         final String password = preferences.getString("from_pass", "");
         Properties props = new Properties();
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                 jcifs.Config.registerSmbURLHandler();
                 jcifs.Config.setProperty("jcifs.encoding", "CP1251");
                 jcifs.Config.setProperty("jcifs.smb.client.useUnicode", "false");
-
+        final SharedPreferences preferences = this.getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
                 try {
                     String user = "10.121.0.75\\olr";
                     String pass = preferences.getString("smb_pass", "");
