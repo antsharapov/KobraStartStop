@@ -9,8 +9,9 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/krr_mail"
+        android:id="@+id/tableLayout">
 
     </TableLayout>
 
@@ -154,5 +155,25 @@
         android:layout_alignBottom="@+id/lock_edit"
         android:layout_alignParentStart="true"
         android:text="Lock,m:" />
+
+    <EditText
+        android:id="@+id/smb_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/lock_edit"
+        android:layout_below="@+id/lock_edit"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SMB pass:"
+        android:layout_below="@+id/lock_edit"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/smb_pass"
+        android:layout_alignEnd="@+id/textView" />
 
 </RelativeLayout>

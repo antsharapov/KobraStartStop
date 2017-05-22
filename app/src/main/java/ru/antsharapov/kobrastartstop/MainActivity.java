@@ -46,6 +46,7 @@ import javax.mail.internet.MimeMessage;
 public class MainActivity extends AppCompatActivity {
 
     private static final String FORMAT = "%02d:%02d:%02d";
+    final SharedPreferences preferences = this.getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
     Spinner sp;
     ArrayList<String> list = new ArrayList<>();
     String first, airport;
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null)
            airport  = extras.getString("airport");
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -179,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void sendEmail(String sending_text) {
-        final SharedPreferences preferences = this.getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
         final String username = preferences.getString("from_mail", "");
         final String password = preferences.getString("from_pass", "");
         Properties props = new Properties();
@@ -242,14 +241,15 @@ public class MainActivity extends AppCompatActivity {
                 jcifs.Config.registerSmbURLHandler();
                 jcifs.Config.setProperty("jcifs.encoding", "CP1251");
                 jcifs.Config.setProperty("jcifs.smb.client.useUnicode", "false");
+
                 try {
                     String user = "10.121.0.75\\olr";
-                    String pass = "***";
+                    String pass = preferences.getString("smb_pass", "");
                     String sharedFolder = "olr/NEW/";
                     String url = "smb://10.121.0.75/" + sharedFolder + airport + "/Arrival.xml";
                     NtlmPasswordAuthentication auth = new NtlmPasswordAuthentication(null, user, pass);
                     SmbFile sfile = new SmbFile(url, auth);
-                    sfile.canRead();
+                    sfile.connect();
                     StringBuilder builder;
                     builder = new StringBuilder();
                     builder = readFileContent(sfile, builder);
@@ -292,10 +292,11 @@ public class MainActivity extends AppCompatActivity {
                             android.R.layout.simple_spinner_dropdown_item, list);
                     sp.setAdapter(adapter);
                     Toast.makeText(getApplicationContext(),"Daily flight plan updated",Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
 
             public void start_timer (){
                 this.timer = new Timer();

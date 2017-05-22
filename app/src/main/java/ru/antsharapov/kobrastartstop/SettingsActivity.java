@@ -23,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         String from_mail = preferences.getString("from_mail", "");
         String from_pass = preferences.getString("from_pass", "");
         String lock_min = preferences.getString("lock_min", "");
+        String smb_pass = preferences.getString("smb_pass", "");
 
         if (aaq_mail.equals("")) aaq_mail="SharapovAV@aaq.basel.aero";
         if (aer_mail.equals("")) aer_mail="SharapovAV@aaq.basel.aero";
@@ -31,6 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (from_mail.equals("")) from_mail="app.mail.relay@gmail.com";
         if (from_pass.equals("")) from_pass="***";
         if (lock_min.equals("")) lock_min="3";
+        if (smb_pass.equals("")) smb_pass="***";
 
         final EditText aaq_edit = (EditText) findViewById(R.id.aaq_editmail);
         final EditText aer_edit = (EditText) findViewById(R.id.aer_editmail);
@@ -39,6 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         final EditText from_edit = (EditText) findViewById(R.id.sendfrom_edit);
         final EditText pass_edit = (EditText) findViewById(R.id.pass_edit);
         final EditText lock_edit = (EditText) findViewById(R.id.lock_edit);
+        final EditText smb_edit = (EditText) findViewById(R.id.smb_pass);
 
         aaq_edit.setText(aaq_mail);
         aer_edit.setText(aer_mail);
@@ -47,6 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
         from_edit.setText(from_mail);
         pass_edit.setText(from_pass);
         lock_edit.setText(lock_min);
+        smb_edit.setText(smb_pass);
 
         Button save_btn = (Button) findViewById(R.id.save_btn);
         save_btn.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
                 preferences.edit().putString("from_mail", from_edit.getText().toString()).apply();
                 preferences.edit().putString("from_pass", pass_edit.getText().toString()).apply();
                 preferences.edit().putString("lock_min", lock_edit.getText().toString()).apply();
+                preferences.edit().putString("smb_edit", smb_edit.getText().toString()).apply();
                 finish();
             }
         });

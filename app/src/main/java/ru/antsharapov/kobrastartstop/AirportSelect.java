@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -57,7 +56,7 @@ public class AirportSelect extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            SocketAddress sockaddr = new InetSocketAddress("10.121.0.75", 135);
+                            SocketAddress sockaddr = new InetSocketAddress("10.121.0.75", 445);
                             Socket sock = new Socket();
                             int timeoutMs = 1000;
                             sock.connect(sockaddr, timeoutMs);
@@ -82,3 +81,5 @@ public class AirportSelect extends AppCompatActivity {
         });
     }
 }
+
+
