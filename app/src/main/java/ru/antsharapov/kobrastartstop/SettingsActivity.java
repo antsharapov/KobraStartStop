@@ -63,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
                 preferences.edit().putString("from_mail", from_edit.getText().toString()).apply();
                 preferences.edit().putString("from_pass", pass_edit.getText().toString()).apply();
                 preferences.edit().putString("lock_min", lock_edit.getText().toString()).apply();
-                preferences.edit().putString("smb_edit", smb_edit.getText().toString()).apply();
+                preferences.edit().putString("smb_pass", smb_edit.getText().toString()).apply();
                 finish();
             }
         });
