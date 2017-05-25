@@ -1,14 +1,21 @@
 package ru.antsharapov.kobrastartstop;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 import java.io.IOException;
@@ -18,6 +25,9 @@ import java.net.SocketAddress;
 import java.util.ArrayList;
 
 public class AirportSelect extends AppCompatActivity {
+
+    String pass, password;
+
     boolean exists = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +41,46 @@ public class AirportSelect extends AppCompatActivity {
         pref_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AirportSelect.this,SettingsActivity.class);
-                startActivity(intent);
+
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(AirportSelect.this);
+                alertDialog.setTitle("Авторизация");
+                alertDialog.setMessage("Введите пароль:");
+
+                final EditText input = new EditText(AirportSelect.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                input.setLayoutParams(lp);
+                alertDialog.setView(input);
+
+                alertDialog.setPositiveButton("Ок",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                final SharedPreferences preferences = getSharedPreferences("ru.antsharapov.kobrastartstop", Context.MODE_PRIVATE);
+                                pass = preferences.getString("alert_pass", "");
+                                if (pass.equals("")) pass="***";
+                                password = input.getText().toString();
+                                if (password.compareTo("") != 0) {
+                                    if (pass.equals(password)) {
+                                        Intent intent = new Intent(AirportSelect.this, SettingsActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        Toast.makeText(getApplicationContext(),
+                                                "Неверный пароль", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+
+                alertDialog.setNegativeButton("Отмена",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alertDialog.show();
             }
         });
 

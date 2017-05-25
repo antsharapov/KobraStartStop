@@ -176,4 +176,22 @@
         android:layout_alignBottom="@+id/smb_pass"
         android:layout_alignEnd="@+id/textView" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@+id/smb_pass"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText"
+        android:layout_alignBottom="@+id/editText"
+        android:text="Settings password" />
+
 </RelativeLayout>

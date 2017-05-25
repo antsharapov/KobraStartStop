@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
-                            sendEmail(sp.getSelectedItem().toString() + ":\nПервая сумка в " + first + ",\nпоследняя сумка в " + last);
+                            sendEmail(sp.getSelectedItem().toString() + ":\nПервая сумка в:\t" + first + ",\nпоследняя сумка в:\t" + last);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

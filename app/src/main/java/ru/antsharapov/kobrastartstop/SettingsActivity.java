@@ -24,6 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
         String from_pass = preferences.getString("from_pass", "");
         String lock_min = preferences.getString("lock_min", "");
         String smb_pass = preferences.getString("smb_pass", "");
+        String alert_pass = preferences.getString("alert_pass", "");
 
         if (aaq_mail.equals("")) aaq_mail="SharapovAV@aaq.basel.aero";
         if (aer_mail.equals("")) aer_mail="SharapovAV@aaq.basel.aero";
@@ -33,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (from_pass.equals("")) from_pass="***";
         if (lock_min.equals("")) lock_min="3";
         if (smb_pass.equals("")) smb_pass="***";
+        if (alert_pass.equals("")) alert_pass="***";
 
         final EditText aaq_edit = (EditText) findViewById(R.id.aaq_editmail);
         final EditText aer_edit = (EditText) findViewById(R.id.aer_editmail);
@@ -42,6 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
         final EditText pass_edit = (EditText) findViewById(R.id.pass_edit);
         final EditText lock_edit = (EditText) findViewById(R.id.lock_edit);
         final EditText smb_edit = (EditText) findViewById(R.id.smb_pass);
+        final EditText alert_edit = (EditText) findViewById(R.id.editText);
 
         aaq_edit.setText(aaq_mail);
         aer_edit.setText(aer_mail);
@@ -51,6 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         pass_edit.setText(from_pass);
         lock_edit.setText(lock_min);
         smb_edit.setText(smb_pass);
+        alert_edit.setText(alert_pass);
 
         Button save_btn = (Button) findViewById(R.id.save_btn);
         save_btn.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
                 preferences.edit().putString("from_pass", pass_edit.getText().toString()).apply();
                 preferences.edit().putString("lock_min", lock_edit.getText().toString()).apply();
                 preferences.edit().putString("smb_pass", smb_edit.getText().toString()).apply();
+                preferences.edit().putString("alert_pass", alert_edit.getText().toString()).apply();
                 finish();
             }
         });
