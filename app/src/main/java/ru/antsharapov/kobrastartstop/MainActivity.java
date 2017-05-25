@@ -1,6 +1,7 @@
 package ru.antsharapov.kobrastartstop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.CountDownTimer;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         final Button last_btn = (Button) findViewById(R.id.button);
         final Button ref_btn = (Button) findViewById(R.id.button3);
         final Button exit_btn = (Button) findViewById(R.id.button4);
+        final Button back_btn = (Button) findViewById(R.id.button5);
         last_btn.setEnabled(false);
 
         first_btn.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
                 first = sdf.format(new Date());
                 sp.setEnabled(false);
+                back_btn.setEnabled(false);
                 first_btn.setEnabled(false);
                 ref_btn.setEnabled(false);
                 exit_btn.setEnabled(false);
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 last_btn.setEnabled(false);
                 ref_btn.setEnabled(true);
                 exit_btn.setEnabled(true);
+                back_btn.setEnabled(true);
                 text1.setText("none");
                 Thread thread = new Thread(new Runnable() {
                     @Override
@@ -141,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AirportSelect.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         readSMB();
 
         start_timer();
