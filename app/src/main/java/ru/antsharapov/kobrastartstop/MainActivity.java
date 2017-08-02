@@ -222,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
                 case "AAQ":
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(aaq_mail));
+                    message.setRecipients(Message.RecipientType.CC,InternetAddress.parse("AlievDA@aaq.basel.aero"));
                     break;
                 case "AER":
                     message.setRecipients(Message.RecipientType.TO,
